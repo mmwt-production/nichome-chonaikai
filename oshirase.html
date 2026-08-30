@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お知らせ｜二丁目町内会</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="sparkle-field" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">二丁目町内会</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="oshirase.html">お知らせ</a></li>
+        <li><a href="gijiroku.html">会議議事録</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="block">
+    <div class="container">
+      <span class="hero-eyebrow">📌 掲示板</span>
+      <h1 style="font-size:clamp(26px,4vw,38px);">お知らせ</h1>
+      <p class="lead" style="margin-bottom:34px;">
+        イベント情報や地域からのお知らせを掲示しています。写真の下に詳しい説明を添えていますので、あわせてご覧ください。
+      </p>
+
+      <div class="corkboard">
+        <div id="board-oshirase" class="board-grid"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <!-- <h4>二丁目町内会</h4> -->
+      <p>お問い合わせ：nichome-chonaikai@gmail.com</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="oshirase.html">お知らせ</a></li>
+      <li><a href="gijiroku.html">会議議事録</a></li>
+      <li><a href="post.html">関係者向け投稿ページ</a></li>
+    </ul>
+  </div>
+  <p class="footer-bottom">© 二丁目町内会</p>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderBoard("#board-oshirase", "notice", "まだお知らせはありません。投稿ページから追加できます。");
+  });
+</script>
+</body>
+</html>

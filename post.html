@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投稿・管理ページ｜二丁目町内会</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="sparkle-field" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">二丁目町内会</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="oshirase.html">お知らせ</a></li>
+        <li><a href="gijiroku.html">会議議事録</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="block">
+    <div class="container">
+
+      <!-- ロック画面：合言葉を知っている人だけが先へ進めます -->
+      <div id="lock-screen" class="lock-screen">
+        <div class="icon">🔒</div>
+        <h2>関係者向けページ</h2>
+        <p style="color:#6b6152;font-size:14px;margin-bottom:20px;">
+          お知らせ・議事録の投稿は、役員・許可された方のみ行えます。<br>合言葉を入力してください。
+        </p>
+        <form id="login-form">
+          <div class="field">
+            <label for="password-input">合言葉</label>
+            <input type="password" id="password-input" placeholder="合言葉を入力" autocomplete="off" required>
+          </div>
+          <p id="login-error" class="error-msg"></p>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">入室する</button>
+        </form>
+      </div>
+
+      <!-- 認証後に表示される投稿・管理エリア -->
+      <div id="admin-area" class="admin-wrap" style="display:none;">
+        <div class="logout-bar">
+          <button id="logout-btn">🔓 ログアウトする</button>
+        </div>
+
+        <div class="admin-card">
+          <span class="hero-eyebrow">✏️ 新規投稿</span>
+          <h2>お知らせ・議事録を投稿する</h2>
+          <form id="post-form">
+            <div class="field">
+              <label for="type-input">投稿の種類</label>
+              <select id="type-input">
+                <option value="notice">お知らせ</option>
+                <option value="gijiroku">会議議事録</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="title-input">タイトル</label>
+              <input type="text" id="title-input" placeholder="例：夏祭りのお知らせ" required>
+            </div>
+            <div class="field">
+              <label for="date-input">日付</label>
+              <input type="date" id="date-input">
+            </div>
+            <div class="field">
+              <label for="img-input">写真（JPG画像）</label>
+              <div class="file-drop">
+                <input type="file" id="img-input" accept="image/*">
+                <p style="margin:6px 0 0;">板書や会場の写真などを選択してください</p>
+              </div>
+              <div id="img-preview" class="preview-thumb"></div>
+            </div>
+            <div class="field">
+              <label for="desc-input">説明文</label>
+              <textarea id="desc-input" placeholder="写真の説明や当日の内容を入力してください" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">この内容で投稿する</button>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <span class="hero-eyebrow">📋 投稿の管理</span>
+          <h2>これまでの投稿</h2>
+          <div id="admin-entry-list"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>二丁目町内会</h4>
+      <p>〒000-0000 二丁目地区内　会館：二丁目集会所</p>
+      <p>お問い合わせ：nichome-chonaikai@example.com（仮）</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="oshirase.html">お知らせ</a></li>
+      <li><a href="gijiroku.html">会議議事録</a></li>
+    </ul>
+  </div>
+  <p class="footer-bottom">© 二丁目町内会</p>
+</footer>
+
+<div class="toast"></div>
+
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二丁目町内会｜トップページ</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="sparkle-field" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">二丁目町内会</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="oshirase.html">お知らせ</a></li>
+        <li><a href="gijiroku.html">会議議事録</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <span class="hero-eyebrow">✨ ご近所の輪を、もっと元気に</span>
+        <h1>二丁目に暮らす<br><span>みんなの笑顔</span>が、<br>まちの元気になる。</h1>
+        <p class="lead">
+          子どもたちの歓声、井戸端の会話、季節の行事——。
+          二丁目町内会は、世代を超えたつながりから地域を元気にする活動を行っています。
+          お知らせや会議の様子はこちらのページから随時ご覧いただけます。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="oshirase.html">最新のお知らせを見る</a>
+          <a class="btn btn-outline" href="gijiroku.html">会議議事録を見る</a>
+        </div>
+      </div>
+      <div class="hero-illust">
+        <div class="photo-frame">
+          <div class="washi-tape"></div>
+          <img src="assets/children.jpg" alt="砂場で仲良く遊ぶ二丁目の子どもたち">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="generations">
+    <div class="container">
+      <div class="gen-card">
+        <img class="illust-photo" src="assets/children.jpg" alt="元気に遊ぶ子どもたち">
+        <h3>子どもたち</h3>
+        <p>広場での遊びや夏祭りが大好き。地域の未来をつくる笑顔の主役です。</p>
+      </div>
+      <div class="gen-card">
+        <img class="illust-photo" src="assets/papa_mama.jpg" alt="仲の良いお父さん・お母さん世代">
+        <h3>お父さん・お母さん世代</h3>
+        <p>子育てや町内会活動の担い手。日々の暮らしの中でご近所をつなぎます。</p>
+      </div>
+      <div class="gen-card">
+        <img class="illust-photo" src="assets/jiji_baba.jpg" alt="仲の良いおじいちゃん・おばあちゃん世代">
+        <h3>おじいちゃん・おばあちゃん</h3>
+        <p>長年の知恵と経験の宝庫。縁側での一服が地域の見守りにもなっています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>最新のお知らせ</h2>
+        <span class="tag">NEW</span>
+      </div>
+      <div id="preview-oshirase" class="board-grid"></div>
+      <div style="text-align:center;margin-top:28px;">
+        <a class="btn btn-sun" href="oshirase.html">お知らせ一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <div class="section-head">
+        <h2>最近の会議議事録</h2>
+        <span class="tag">MEETING</span>
+      </div>
+      <div id="preview-gijiroku" class="board-grid"></div>
+      <div style="text-align:center;margin-top:28px;">
+        <a class="btn btn-outline" href="gijiroku.html">議事録一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <!-- <h4>二丁目町内会</h4> -->
+      <p>お問い合わせ：nichome-chonaikai@gmail.com</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="oshirase.html">お知らせ</a></li>
+      <li><a href="gijiroku.html">会議議事録</a></li>
+      <li><a href="post.html">関係者向け投稿ページ</a></li>
+    </ul>
+  </div>
+  <p class="footer-bottom">© 二丁目町内会</p>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderPreview("#preview-oshirase", "notice", 3, "まだお知らせはありません。投稿ページから追加できます。");
+    renderPreview("#preview-gijiroku", "gijiroku", 3, "まだ議事録はありません。投稿ページから追加できます。");
+  });
+</script>
+</body>
+</html>
