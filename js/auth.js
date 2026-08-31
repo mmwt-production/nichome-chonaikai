@@ -6,7 +6,7 @@
    ========================================================= */
 
 /* ▼▼ ここを書き換えると合言葉を変更できます ▼▼ */
-const ADMIN_PASSWORD = "nichome2024";
+const ADMIN_PASSWORD = "nichome@2026@";
 /* ▲▲ ここを書き換えると合言葉を変更できます ▲▲ */
 
 const SESSION_KEY = "chonaikai_admin_unlocked";
