@@ -401,6 +401,7 @@ section.block.alt{
   padding:50px 20px;
   color:var(--ink-soft);
   font-weight:700;
+  font-size:15px;
 }
 .empty-note span{ font-size:34px; display:block; margin-bottom:8px; }
 
