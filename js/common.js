@@ -126,7 +126,30 @@ function renderPreview(containerSelector, type, limit = 3, emptyMessage){
   el.innerHTML = entries.map(renderCard).join("");
 }
 
+/* ---------- スクロールで現れる演出 ---------- */
+function initRevealObserver(){
+  const targets = document.querySelectorAll(".reveal");
+  if(targets.length === 0) return;
+
+  if(!("IntersectionObserver" in window)){
+    targets.forEach(t => t.classList.add("is-visible"));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  targets.forEach(t => io.observe(t));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initSparkleField();
   markActiveNav();
+  initRevealObserver();
 });

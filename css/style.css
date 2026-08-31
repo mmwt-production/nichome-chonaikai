@@ -21,7 +21,7 @@
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
 
 body{
   margin:0;
@@ -32,9 +32,10 @@ body{
     var(--paper);
   line-height:1.8;
   overflow-x:hidden;
+  width:100%;
 }
 
-img{ max-width:100%; display:block; }
+img,svg{ max-width:100%; display:block; }
 a{ color:inherit; }
 
 h1,h2,h3{
@@ -81,6 +82,7 @@ h1,h2,h3{
 
 @media (prefers-reduced-motion: reduce){
   .sparkle-field{ display:none; }
+  .reveal{ opacity:1 !important; transform:none !important; }
   *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; }
 }
 
@@ -182,10 +184,60 @@ h1,h2,h3{
   filter:drop-shadow(0 14px 18px rgba(58,50,38,.15));
   animation: sway 6s ease-in-out infinite;
 }
+.photo-frame{
+  position:relative;
+  background:var(--white);
+  padding:14px 14px 22px;
+  border-radius:14px;
+  box-shadow:var(--shadow-pin);
+  animation: sway 6s ease-in-out infinite;
+}
+.photo-frame img{
+  width:100%;
+  height:auto;
+  border-radius:6px;
+  display:block;
+}
 @keyframes sway{
   0%,100%{ transform:translateY(0) rotate(-.4deg); }
   50%{ transform:translateY(-8px) rotate(.4deg); }
 }
+
+/* ---- スクロールで現れる演出 ---- */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---- カード類の登場アニメーション（描画時に自動再生） ---- */
+@keyframes cardPopIn{
+  0%{ opacity:0; transform:translateY(18px) scale(.96); }
+  100%{ opacity:1; transform:translateY(0) scale(1); }
+}
+.gen-card, .notice-card{
+  animation:cardPopIn .6s ease backwards;
+}
+.gen-card:nth-child(1){ animation-delay:.05s; }
+.gen-card:nth-child(2){ animation-delay:.18s; }
+.gen-card:nth-child(3){ animation-delay:.31s; }
+.notice-card:nth-child(1){ animation-delay:.03s; }
+.notice-card:nth-child(2){ animation-delay:.1s; }
+.notice-card:nth-child(3){ animation-delay:.17s; }
+.notice-card:nth-child(4){ animation-delay:.24s; }
+.notice-card:nth-child(5){ animation-delay:.31s; }
+.notice-card:nth-child(6){ animation-delay:.38s; }
+
+/* ---- 目を引くボタンの鼓動 ---- */
+@keyframes btnPulse{
+  0%,100%{ box-shadow:0 6px 0 rgba(0,0,0,.08), 0 0 0 0 rgba(242,120,75,.35); }
+  50%{ box-shadow:0 6px 0 rgba(0,0,0,.08), 0 0 0 8px rgba(242,120,75,0); }
+}
+.btn-pulse{ animation:btnPulse 2.4s ease-in-out infinite; }
 
 .btn{
   display:inline-flex;
@@ -215,7 +267,7 @@ h1,h2,h3{
 .generations{
   padding:10px 0 60px;
 }
-.generations .container{
+.gen-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:24px;
@@ -234,6 +286,14 @@ h1,h2,h3{
 .gen-card:nth-child(3){ --tilt:-1deg; }
 .gen-card:hover{ transform:rotate(0deg) translateY(-6px); }
 .gen-card svg{ width:100%; height:auto; margin-bottom:10px; }
+.gen-card .illust-photo{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:contain;
+  background:var(--paper);
+  border-radius:12px;
+  margin-bottom:10px;
+}
 .gen-card h3{ font-size:18px; margin-bottom:4px; }
 .gen-card p{ font-size:13.5px; color:var(--ink-soft); margin:0; }
 
@@ -392,7 +452,7 @@ section.block.alt{
   border-radius:10px;
   border:2px solid #e6dcc7;
   font-family:var(--font-body);
-  font-size:15px;
+  font-size:16px;
   background:var(--paper);
 }
 .field textarea{ min-height:110px; resize:vertical; }
@@ -480,10 +540,96 @@ section.block.alt{
   font-family:var(--font-body);
 }
 
+/* ============ 議事録ページ下部：関係者向けリンク ============ */
+.staff-link-note{
+  text-align:center;
+  margin-top:36px;
+  padding-top:20px;
+  border-top:1px dashed var(--cork-dark);
+}
+.staff-link-note a{
+  font-size:13px;
+  color:var(--ink-soft);
+  text-decoration:underline;
+}
+.staff-link-note a:hover{ color:var(--persimmon); }
+
+/* ============ お問い合わせページ ============ */
+.contact-note{
+  background:rgba(107,143,113,.1);
+  border:1px solid rgba(107,143,113,.35);
+  border-radius:12px;
+  padding:14px 18px;
+  font-size:13.5px;
+  color:var(--ink-soft);
+  margin-bottom:24px;
+}
+.success-panel{
+  text-align:center;
+  padding:40px 20px;
+}
+.success-panel .icon{ font-size:44px; }
+
 /* ============ レスポンシブ ============ */
+@media (max-width: 980px){
+  .container{ padding:0 20px; }
+}
+
 @media (max-width: 760px){
-  .hero .container{ grid-template-columns:1fr; }
-  .hero-illust{ order:-1; max-width:320px; margin:0 auto; }
-  .generations .container{ grid-template-columns:1fr; }
-  .site-footer .container{ flex-direction:column; }
+  .hero{ padding:40px 0 28px; }
+  .hero .container{ grid-template-columns:1fr; gap:22px; }
+  .hero-illust{ order:-1; max-width:340px; margin:0 auto; }
+  .hero p.lead{ font-size:15.5px; max-width:none; }
+  .hero-actions{ justify-content:center; }
+
+  .generations{ padding:6px 0 44px; }
+  .gen-grid{ grid-template-columns:1fr; gap:18px; }
+
+  section.block{ padding:36px 0; }
+
+  .corkboard{
+    padding:16px;
+    border-width:7px;
+    border-radius:14px;
+  }
+  .board-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  /* カードの傾き(回転)は狭い画面だと端がはみ出して見えるため無効化 */
+  .gen-card, .notice-card{
+    transform:none !important;
+  }
+  .gen-card:hover, .notice-card:hover{
+    transform:translateY(-4px) !important;
+  }
+
+  .site-header .container{
+    justify-content:center;
+    text-align:center;
+  }
+  .brand{ flex-direction:column; align-items:center; gap:2px; }
+  .main-nav ul{ justify-content:center; }
+  .main-nav a{ padding:7px 13px; font-size:13px; }
+
+  .site-footer{ text-align:center; }
+  .site-footer .container{ flex-direction:column; align-items:center; text-align:center; }
+  .footer-links{ justify-content:center; }
+
+  .lock-screen{ margin:36px auto; padding:26px 20px; max-width:100%; }
+  .admin-card{ padding:20px 18px; }
+}
+
+@media (max-width: 420px){
+  .container{ padding:0 14px; }
+  .hero h1{ font-size:clamp(24px,7vw,32px); }
+  .hero-eyebrow{ font-size:12px; padding:5px 12px; }
+  .section-head h2{ font-size:20px; }
+  .corkboard{ padding:10px; border-width:6px; }
+  .notice-card{ padding:12px 12px 16px; }
+  .gen-card{ padding:14px 14px 18px; }
+  .btn{ padding:11px 18px; font-size:14px; }
+  .entry-row{ flex-wrap:wrap; }
+  .entry-row .del-btn{ margin-left:auto; }
 }

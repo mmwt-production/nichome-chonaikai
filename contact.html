@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ｜二丁目町内会</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="sparkle-field" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">二丁目町内会 <small>Nichome Neighborhood Association</small></a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="oshirase.html">お知らせ</a></li>
+        <li><a href="gijiroku.html">会議議事録</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="block">
+    <div class="container">
+      <span class="hero-eyebrow">✉️ ご意見・ご質問</span>
+      <h1 style="font-size:clamp(26px,4vw,38px);">お問い合わせ</h1>
+      <p class="lead" style="margin-bottom:24px;">
+        町内会活動へのご意見・ご質問、行事のお問い合わせなどはこちらのフォームからお送りください。
+        いただいた内容は町内会事務局で確認のうえ、必要に応じてご連絡いたします。
+      </p>
+
+      <div id="config-warning" class="contact-note" style="display:none;background:rgba(242,120,75,.1);border-color:rgba(242,120,75,.4);">
+        ⚠️ このフォームはまだ送信先(GASのURL)が設定されていません。<code>js/contact.js</code>
+        内の <code>GAS_WEB_APP_URL</code> を、実際にデプロイしたGoogle Apps ScriptのURLに書き換えてください。
+      </div>
+
+      <div class="admin-wrap">
+        <div id="form-wrap" class="admin-card">
+          <form id="contact-form" method="POST" target="hidden_iframe">
+            <div class="field">
+              <label for="name-input">お名前</label>
+              <input type="text" id="name-input" name="name" placeholder="例：二丁目 花子" required>
+            </div>
+            <div class="field">
+              <label for="contact-input">ご連絡先（電話番号 または メールアドレス）</label>
+              <input type="text" id="contact-input" name="contact" placeholder="例：090-0000-0000" required>
+            </div>
+            <div class="field">
+              <label for="subject-input">件名</label>
+              <select id="subject-input" name="subject">
+                <option value="一般のお問い合わせ">一般のお問い合わせ</option>
+                <option value="行事・イベントについて">行事・イベントについて</option>
+                <option value="会館・設備について">会館・設備について</option>
+                <option value="その他">その他</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message-input">お問い合わせ内容</label>
+              <textarea id="message-input" name="message" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">送信する</button>
+          </form>
+        </div>
+
+        <div id="success-panel" class="admin-card success-panel" style="display:none;">
+          <div class="icon">📮</div>
+          <h2>送信ありがとうございました</h2>
+          <p style="color:#6b6152;">
+            お問い合わせを受け付けました。
+            内容を確認のうえ、必要に応じて折り返しご連絡いたします。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>二丁目町内会</h4>
+      <!-- <p>〒000-0000 二丁目地区内　会館：二丁目集会所</p>
+      <p>お問い合わせ：nichome-chonaikai@example.com（仮）</p> -->
+    </div>
+    <ul class="footer-links">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="oshirase.html">お知らせ</a></li>
+      <li><a href="gijiroku.html">会議議事録</a></li>
+      <!-- <li><a href="contact.html">お問い合わせ</a></li> -->
+    </ul>
+  </div>
+  <p class="footer-bottom">© 二丁目町内会</p>
+</footer>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<script src="js/common.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>
