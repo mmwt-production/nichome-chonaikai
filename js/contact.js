@@ -6,7 +6,7 @@
    ========================================================= */
 
 /* ▼▼ ここをご自身のGAS WebアプリのURLに書き換えてください ▼▼ */
-const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwMw7k7QsyQW8t-t_N0jNy653vS81d209SmLFmULXDp38GzcromT-aXNL3w1l1wdn4K/exec";
+const GAS_WEB_APP_URL = "ここにGASのWebアプリURLを貼り付けてください";
 /* ▲▲ ここをご自身のGAS WebアプリのURLに書き換えてください ▲▲ */
 
 document.addEventListener("DOMContentLoaded", () => {
